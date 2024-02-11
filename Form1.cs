@@ -14,6 +14,7 @@ namespace 마인크래프트도우미_Framework
 {
     public partial class Form1 : Form
     {
+        public string ApplicationData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft";
         public Form1()
         {
             InitializeComponent();
@@ -42,10 +43,10 @@ namespace 마인크래프트도우미_Framework
         private void button2_Click(object sender, EventArgs e)
         {
             //맵
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\saves"))
+            if (Directory.Exists(ApplicationData+ @"\saves"))
             {
                 MessageBox.Show("맵 파일 입니다!");
-                Process.Start(new ProcessStartInfo { FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\saves", UseShellExecute = true });
+                Process.Start(new ProcessStartInfo { FileName = ApplicationData+@"\saves", UseShellExecute = true });
             }
             else
             {
@@ -56,27 +57,27 @@ namespace 마인크래프트도우미_Framework
         private void button3_Click(object sender, EventArgs e)
         {
             //모드
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\mods"))
+            if (Directory.Exists(ApplicationData+@"\mods"))
             {
                 //있을경우
-                Process.Start(new ProcessStartInfo { FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\mods", UseShellExecute = true });
+                Process.Start(new ProcessStartInfo { FileName = ApplicationData+@"\mods", UseShellExecute = true });
             }
             else
             {
                 //없을경우 폴더 생성 + 경고 (forge 설치 또는 Fabric 설치 알림)
                 MessageBox.Show("포지 또는 패브릭 을 설치하셔야 됩니다!");
-                string mesps = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\mods";
+                string mesps = ApplicationData + @"\mods";
                 File.Create(mesps);
-                Process.Start(new ProcessStartInfo { FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\mods", UseShellExecute = true });
+                Process.Start(new ProcessStartInfo { FileName = ApplicationData + @"\mods", UseShellExecute = true });
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             //스크린샷
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\screenshots"))
+            if (Directory.Exists(ApplicationData+@"\screenshots"))
             {
-                Process.Start(new ProcessStartInfo { FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\screenshots", UseShellExecute = true });
+                Process.Start(new ProcessStartInfo { FileName = ApplicationData + @"\screenshots", UseShellExecute = true });
             }
             else
             {
@@ -94,9 +95,9 @@ namespace 마인크래프트도우미_Framework
         private void button6_Click(object sender, EventArgs e)
         {
             //로그
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\logs"))
+            if (Directory.Exists(ApplicationData+@"\logs"))
             {
-                Process.Start(new ProcessStartInfo { FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\logs", UseShellExecute = true });
+                Process.Start(new ProcessStartInfo { FileName = ApplicationData + @"\logs", UseShellExecute = true });
             }
             else
             {
@@ -107,9 +108,9 @@ namespace 마인크래프트도우미_Framework
         private void button7_Click(object sender, EventArgs e)
         {
             //세이더
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\shaderpacks"))
+            if (Directory.Exists(ApplicationData +@"\shaderpacks"))
             {
-                Process.Start(new ProcessStartInfo { FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\.minecraft\shaderpacks", UseShellExecute = true });
+                Process.Start(new ProcessStartInfo { FileName = ApplicationData +@"\shaderpacks", UseShellExecute = true });
             }
             //파일이 없을경우 옵티파인 또는 나트륨 필요 알림
             else
@@ -120,7 +121,15 @@ namespace 마인크래프트도우미_Framework
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            //코드 보기
             Process.Start("https://github.com/ghrl1121/minecraft_helper_Framework");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //서버 도우미
+            MessageBox.Show("이건 서버 도우미 다운 받는것 입니다 \n\r서버 다운은 아닙니다!");
+            Process.Start("https://github.com/ghrl1121/minecraft_helper_server");
         }
     }
 }
